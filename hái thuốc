@@ -1,0 +1,56 @@
+//https://oj.vnoi.info/problem/ngoloiyl_haithuoc
+// code mảng 1 chiều
+#include<bits/stdc++.h>
+using namespace std;
+#define fi first
+#define se second
+#define ll long long
+const ll N=1e6;
+ll a[1000001],b[1000001],n,k,i,d,j,s,x,kt,du,t,l,r,m,ans,d1,y,z,i2,i3,i5,kt1,val,ma,temp,res;
+map <int,int>vt,p;
+vector<pair<int,int>> v,v2;
+ll dp[1000001];
+int main ()
+{
+    //ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin>>s>>n;
+    for(i=1; i<=n; i++){
+        cin>>a[i]>>b[i];
+        }
+    for(i=1; i<=n; i++)
+        for(j=s; j>=0; j--){
+            if(j>=a[i])
+                dp[j]=max(dp[j],dp[j-a[i]]+b[i]);
+        }
+    cout<<dp[s];
+
+return 0;
+}
+// code mảng 2 chiều
+#include<bits/stdc++.h>
+using namespace std;
+#define fi first
+#define se second
+#define ll long long
+const ll N=1e6;
+ll a[1000001],b[1000001],n,k,i,d,j,s,x,kt,du,t,l,r,m,ans,d1,y,z,i2,i3,i5,kt1,val,ma,temp,res;
+map <int,int>vt,p;
+vector<pair<int,int>> v,v2;
+ll dp[1001][1001];
+int main ()
+{
+    //ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin>>s>>n;
+    for(i=1; i<=n; i++){
+        cin>>a[i]>>b[i];
+        }
+    for(i=1; i<=n; i++)
+        for(j=0; j<=s; j++){
+            dp[i][j]=dp[i-1][j];
+            if(j>=a[i])
+                dp[i][j]=max(dp[i][j],dp[i-1][j-a[i]]+b[i]);
+        }
+    cout<<dp[n][s];
+
+return 0;
+}
