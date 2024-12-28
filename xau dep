@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+    using namespace std;
+    #define ll long long
+    #define fi first
+    #define se second
+    ll n,q,l,r,x,y,ans,v[27][1000001];
+    string s;
+    int main() {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+        cin>>n>>q;
+        cin>>s;
+        for(int i=0;i<n;i++){
+            v[s[i]-97][i+1]++;
+            for(int j=0;j<26;j++)
+                v[j][i+1]+=v[j][i];
+    }
+        while(q--){
+        cin>>l>>r;
+        l++;
+        r++;
+        ans=0;
+        for(int i=0;i<26;i++)
+          if((v[i][r]-v[i][l-1])%2==1)
+            ans++;
+        cout<<ans/2<<"\n";
+        }
+        return 0;
+    }
